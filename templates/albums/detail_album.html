@@ -4,6 +4,6 @@
     <h2>{{ album.artist }}</h2>    
     <h3>{{ album.title }}</h3>
     <h4>{{ album.songs }}</h4>
-
+    <a href="{% url 'edit_album' album.pk %}">Edit Album</a>
     
 {% endblock %}

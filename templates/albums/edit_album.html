@@ -6,9 +6,10 @@
 <div>
   <form action="{% url 'edit_album' pk=album.pk %}" method="POST">
     {% csrf_token %}
+    {{ form.as_p }}
     <p>Are you sure you want to edit {{ album.title }}?</p>
     <div>
-      <button type="submit">Edit Album</button><br />
+      <button type="submit">Submit</button><br />
       <a href="{% url 'list_albums' %}">Cancel</a>
     </div>
   </form>
