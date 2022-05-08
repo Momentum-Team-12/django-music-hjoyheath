@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from albums import views as albums_views
 from django.urls import path
+from django.conf.urls.static import static 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
