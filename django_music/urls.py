@@ -18,7 +18,7 @@ from django.conf import settings
 from albums import views as albums_views
 from django.urls import path, include
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,4 +29,4 @@ urlpatterns = [
     path('albums/<int:pk>/edit', albums_views.edit_album, name='edit_album'),
 ]
 # if settings.DEBUG:
-urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

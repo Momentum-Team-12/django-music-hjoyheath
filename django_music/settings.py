@@ -56,7 +56,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'django_music.urls'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/img')
 STATIC_URL = '/static/'

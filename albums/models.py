@@ -14,5 +14,4 @@ class Album(models.Model):
         return self.title
 
 
-class Artist(models.Model):
-    musician = models.TextField(max_length=100)
+
