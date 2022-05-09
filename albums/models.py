@@ -12,3 +12,7 @@ class Album(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Artist(models.Model):
+    musician = models.TextField(max_length=100)

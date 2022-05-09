@@ -4,7 +4,7 @@
 <h1>Details</h1> 
 <a href="{% url 'list_albums' %}">Home Page</a>
 <div>
-<img src="{{ albums.image.url }}" alt="" width="100%">
+<img src= {{ album.image }} alt="image" width="100%">
 </div>
     <h2>Artist: {{ album.artist }} </h2> 
     <h2>Album: {{ album.title }}</h2>   
@@ -13,3 +13,4 @@
     <a href="{% url 'edit_album' album.pk %}">Edit Album</a>
     
 {% endblock %}
+

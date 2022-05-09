@@ -10,17 +10,22 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import environ
+import os
 from pathlib import Path
+
+env = environ.Env(
+    DEBUG=(bool, False)
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
-
+SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-+3b-cv76jus5^h28)@peb+6(5^q2270-8&54k&=m$_4y0@rc6@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -51,11 +56,15 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'django_music.urls'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/img')
+STATIC_URL = '/static/'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,6 +76,7 @@ TEMPLATES = [
         },
     },
 ]
+FILE_PATH_FIELD_DIRECTORY = '/Users/katie/Momentum/django-music-hjoyheath'
 
 WSGI_APPLICATION = 'django_music.wsgi.application'
 
@@ -76,10 +86,11 @@ WSGI_APPLICATION = 'django_music.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
 }
+
 
 
 # Password validation
@@ -116,7 +127,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+
+
+INTERNAL_IPS = [   
+    "127.0.0.1",
+]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
