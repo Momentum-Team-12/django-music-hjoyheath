@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Album(models.Model):
-    image = models.ImageField(upload_to='img/')
+    image = models.ImageField(upload_to='img/', null=True, blank=True)
     title = models.CharField(max_length=100)
     artist = models.CharField(max_length=100)
     songs = models.TextField(max_length=500)
